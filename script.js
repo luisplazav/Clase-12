@@ -244,6 +244,7 @@ new Chart(document.getElementById("empleabilidad-diseno"), {
         ],
     },
     options: {
+        animation:false,
         indexAxis: "y",
         maintainAspectRatio: false,
         scales: {
