@@ -227,7 +227,7 @@ new Chart(document.getElementById("barras"), {
     options: {
         indexAxis: "y",
         responsive: true,
-        
+        maintainAspectRatio: false,
         scales: {
             x: {
                 grid: { color: "rgba(0,0,0,0.06)" },
