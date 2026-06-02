@@ -167,6 +167,7 @@ new Chart(document.getElementById("otro"), {
     },
 });
 
+document.getElementById("barras").style.height = "520px";
 new Chart(document.getElementById("barras"), {
     type: "bar",
     data: {
