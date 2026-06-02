@@ -225,6 +225,7 @@ new Chart(document.getElementById("barras"), {
         ],
     },
     options: {
+        animation: false,
         indexAxis: "y",
         responsive: true,
       
