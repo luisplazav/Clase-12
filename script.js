@@ -167,7 +167,7 @@ new Chart(document.getElementById("otro"), {
     },
 });
 
-new Chart(document.getElementById("barras"), {
+new Chart(document.getElementById("empleabilidad-diseno"), {
     type: "bar",
     data: {
         labels: [
