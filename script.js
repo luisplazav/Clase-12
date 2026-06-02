@@ -166,8 +166,10 @@ new Chart(document.getElementById("otro"), {
         },
     },
 });
-
+ 
+// El canvas hereda el alto del contenedor; hay que fijarlo antes de crear el chart
 document.getElementById("barras").style.height = "520px";
+ 
 new Chart(document.getElementById("barras"), {
     type: "bar",
     data: {
