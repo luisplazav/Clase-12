@@ -167,102 +167,162 @@ new Chart(document.getElementById("otro"), {
     },
 });
 
- new Chart(canvas, {
+new Chart(document.getElementById("barras"), {
     type: "bar",
     data: {
-      labels,
-      datasets: [{
-        label: "Arancel anual promedio (CLP)",
-        data: valores,
-        backgroundColor: colores,
-        borderColor: bordes,
-        borderWidth: 1.5,
-        borderRadius: 3,
-      }],
+        labels: [
+            // ── Universidades (ordenadas por acreditación ↑, luego arancel ↑) ──
+            "UNIACC",
+            "U. de Viña del Mar",
+            "U. Gabriela Mistral",
+            "UTEM",
+            "U. de La Serena",
+            "U. de Playa Ancha",
+            "U. del Bío-Bío",
+            "U. de Las Américas",
+            "U. de Antofagasta",
+            "U. Católica de Temuco",
+            "U. Bernardo O'Higgins",
+            "U. Mayor",
+            "U. Finis Terrae",
+            "U. de Valparaíso",
+            "U. Téc. Federico Santa María",
+            "U. Austral de Chile",
+            "U. de Talca",
+            "U. de Tarapacá",
+            "U. Andrés Bello",
+            "U. Diego Portales",
+            "U. del Desarrollo",
+            "U. Adolfo Ibáñez",
+            "USACH",
+            "U. de Chile",
+            "PUCV",
+            "PUC",
+        ],
+        datasets: [
+            {
+                label: "Arancel anual promedio",
+                data: [
+                    // acred 3
+                    4257500,
+                    // acred 4
+                    4277000,
+                    4814000,
+                    4827150,
+                    // acred 5
+                    4071000,
+                    4305000,
+                    4370500,
+                    4730000,
+                    5120000,
+                    5276000,
+                    5900000,
+                    7214218,
+                    7280000,
+                    // acred 6
+                    5713000,
+                    5726666,
+                    5887000,
+                    5887000,
+                    6555000,
+                    6604500,
+                    7597000,
+                    8725030,
+                    9754692,
+                    // acred 7
+                    5770500,
+                    5989550,
+                    6915000,
+                    8080000,
+                ],
+                // Color por nivel de acreditación institucional (CNA 2026)
+                // rojo=3, naranja=4, amarillo=5, verde=6, azul=7
+                backgroundColor: [
+                    // acred 3
+                    "rgba(234,67,53,.75)",
+                    // acred 4
+                    "rgba(255,109,1,.75)",
+                    "rgba(255,109,1,.75)",
+                    "rgba(255,109,1,.75)",
+                    // acred 5
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    "rgba(251,188,4,.75)",
+                    // acred 6
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    "rgba(52,168,83,.75)",
+                    // acred 7
+                    "rgba(26,115,232,.75)",
+                    "rgba(26,115,232,.75)",
+                    "rgba(26,115,232,.75)",
+                    "rgba(26,115,232,.75)",
+                ],
+                // Años de acreditación por institución (mismo orden que labels/data)
+                acreditacion: [3, 4,4,4, 5,5,5,5,5,5,5,5,5, 6,6,6,6,6,6,6,6,6, 7,7,7,7],
+                borderWidth: 0,
+                borderRadius: 2,
+            },
+        ],
     },
     options: {
-      indexAxis: "y",          // ← barras HORIZONTALES
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        title: {
-          display: false,       // El h4 en el HTML cumple esta función
-        },
-        tooltip: {
-          callbacks: {
-            title: (items) => items[0].label,
-            label: (item) => {
-              const idx = item.dataIndex;
-              return [
-                `  Arancel: $${Number(item.raw).toLocaleString("es-CL")}`,
-                `  Acreditación: ${acreds[idx]} años`,
-              ];
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                grid: { color: "rgba(0,0,0,0.06)" },
+                border: { color: "#ccc" },
+                ticks: {
+                    font: { family: "'Georama', sans-serif", size: 11 },
+                    color: "#999",
+                    callback: function (value) {
+                        return "$ " + (value / 1000000).toFixed(1) + "M";
+                    },
+                },
             },
-          },
-          backgroundColor: "rgba(32,33,36,0.92)",
-          titleFont: { family: "'IBM Plex Sans', sans-serif", size: 13 },
-          bodyFont:  { family: "'IBM Plex Sans', sans-serif", size: 12 },
-          padding: 12,
-          cornerRadius: 6,
+            y: {
+                grid: { display: false },
+                border: { color: "#bbb", dash: [4, 4] },
+                ticks: {
+                    font: { family: "'Georama', sans-serif", size: 11 },
+                    color: "#999",
+                },
+            },
         },
-      },
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: "Arancel anual (millones de pesos)",
-            font: { family: "'IBM Plex Sans', sans-serif", size: 12 },
-            color: "#5f6368",
-          },
-          ticks: {
-            callback: (v) => "$" + (v / 1000000).toFixed(1) + "M",
-            font: { family: "'IBM Plex Sans', sans-serif", size: 11 },
-            color: "#5f6368",
-          },
-          grid: { color: "rgba(0,0,0,0.06)" },
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: "#fff",
+                borderColor: "#ddd",
+                borderWidth: 1,
+                titleColor: "#111",
+                bodyColor: "#555",
+                titleFont: { family: "'Georama', sans-serif", size: 12, weight: "600" },
+                bodyFont: { family: "'Georama', sans-serif", size: 11 },
+                padding: 10,
+                callbacks: {
+                    label: function (context) {
+                        const acred = context.dataset.acreditacion[context.dataIndex];
+                        return [
+                            "Acreditación institucional: " + acred + " años",
+                            "Arancel promedio: $ " + context.raw.toLocaleString("es-CL"),
+                        ];
+                    },
+                },
+            },
         },
-        y: {
-          ticks: {
-            font: { family: "'IBM Plex Sans', sans-serif", size: 11 },
-            color: "#3c4043",
-          },
-          grid: { display: false },
-        },
-      },
     },
-  });
-}
- 
-/* ── Leyenda de niveles de acreditación ──────────────────── */
- 
-function buildLeyenda(contenedorId) {
-  const el = document.getElementById(contenedorId);
-  if (!el) return;
- 
-  const niveles = [
-    { años: "3 años",   color: colorPorAcred(3),  texto: "Básico bajo" },
-    { años: "4 años",   color: colorPorAcred(4),  texto: "Básico alto" },
-    { años: "5 años",   color: colorPorAcred(5),  texto: "Avanzado bajo" },
-    { años: "6 años",   color: colorPorAcred(6),  texto: "Avanzado alto" },
-    { años: "6–7 años", color: colorPorAcred(7),  texto: "Excelencia" },
-  ];
- 
-  el.innerHTML = niveles.map(n => `
-    <span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;
-                 font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;color:#3c4043;">
-      <span style="display:inline-block;width:12px;height:12px;border-radius:2px;
-                   background:${n.color};flex-shrink:0;"></span>
-      ${n.años} — ${n.texto}
-    </span>
-  `).join("");
-}
- 
-/* ── Inicializar cuando el DOM esté listo ────────────────── */
- 
-document.addEventListener("DOMContentLoaded", () => {
-  buildLeyenda("leyenda-acreditacion");
-  buildChart("grafico-universidades", UNIVERSIDADES, "Universidades");
-  buildChart("grafico-ipcft", IP_CFT, "Institutos Profesionales");
 });
- 
