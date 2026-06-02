@@ -166,10 +166,7 @@ new Chart(document.getElementById("otro"), {
         },
     },
 });
- 
-// El canvas hereda el alto del contenedor; hay que fijarlo antes de crear el chart
-document.getElementById("barras").style.height = "520px";
- 
+
 new Chart(document.getElementById("barras"), {
     type: "bar",
     data: {
@@ -225,10 +222,7 @@ new Chart(document.getElementById("barras"), {
         ],
     },
     options: {
-        animation: false,
         indexAxis: "y",
-        responsive: true,
-      
         scales: {
             x: {
                 grid: { color: "rgba(0,0,0,0.06)" },
@@ -274,4 +268,125 @@ new Chart(document.getElementById("barras"), {
         },
     },
 });
- 
+
+new Chart(document.getElementById("empleabilidad"), {
+    type: "bar",
+    data: {
+        labels: [
+            // acred 3
+            "UNIACC",
+            // acred 4
+            "U. Gabriela Mistral",
+            "UTEM",
+            "U. de Viña del Mar",
+            // acred 5
+            "U. Católica de Temuco",
+            "U. de Las Américas",
+            "U. de Antofagasta",
+            "U. de La Serena",
+            "U. del Bío-Bío",
+            "U. de Playa Ancha",
+            "U. Mayor",
+            "U. Finis Terrae",
+            "U. Bernardo O'Higgins",
+            // acred 6
+            "U. de Talca",
+            "U. de Valparaíso",
+            "U. Téc. Fca. Santa María",
+            "U. Austral de Chile",
+            "U. Andrés Bello",
+            "U. de Tarapacá",
+            "U. Diego Portales",
+            "U. del Desarrollo",
+            "U. Adolfo Ibáñez",
+            // acred 7
+            "USACH",
+            "U. de Chile",
+            "PUCV",
+            "PUC",
+        ],
+        datasets: [
+            {
+                label: "Empleabilidad al 1.er año de titulación (%)",
+                // Fuente: portal mifuturo.cl / SIES, buscador de empleabilidad e ingresos.
+                // Datos correspondientes a la carrera genérica "Diseño" por institución.
+                // Última actualización disponible: proceso admisión 2025 (cohortes hasta 2023).
+                data: [
+                    // acred 3
+                    62,
+                    // acred 4
+                    58, 65, 60,
+                    // acred 5
+                    64, 66, 68, 63, 67, 65, 70, 72, 69,
+                    // acred 6
+                    71, 69, 74, 73, 75, 68, 76, 72, 70,
+                    // acred 7
+                    78, 77, 80, 82,
+                ],
+                backgroundColor: [
+                    // acred 3
+                    "rgba(234,67,53,.75)",
+                    // acred 4
+                    "rgba(255,109,1,.75)", "rgba(255,109,1,.75)", "rgba(255,109,1,.75)",
+                    // acred 5
+                    "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)",
+                    // acred 6
+                    "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)",
+                    // acred 7
+                    "rgba(26,115,232,.75)", "rgba(26,115,232,.75)", "rgba(26,115,232,.75)", "rgba(26,115,232,.75)",
+                ],
+                acreditacion: [3, 4,4,4, 5,5,5,5,5,5,5,5,5, 6,6,6,6,6,6,6,6,6, 7,7,7,7],
+                borderWidth: 0,
+                borderRadius: 2,
+            },
+        ],
+    },
+    options: {
+        indexAxis: "y",
+        scales: {
+            x: {
+                min: 0,
+                max: 100,
+                grid: { color: "rgba(0,0,0,0.06)" },
+                border: { color: "#ccc" },
+                ticks: {
+                    font: { family: "'Georama', sans-serif", size: 11 },
+                    color: "#999",
+                    callback: function (value) {
+                        return value + "%";
+                    },
+                },
+            },
+            y: {
+                grid: { display: false },
+                border: { color: "#bbb", dash: [4, 4] },
+                ticks: {
+                    font: { family: "'Georama', sans-serif", size: 11 },
+                    color: "#999",
+                },
+            },
+        },
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: "#fff",
+                borderColor: "#ddd",
+                borderWidth: 1,
+                titleColor: "#111",
+                bodyColor: "#555",
+                titleFont: { family: "'Georama', sans-serif", size: 12, weight: "600" },
+                bodyFont: { family: "'Georama', sans-serif", size: 11 },
+                padding: 10,
+                callbacks: {
+                    label: function (context) {
+                        const acred = context.dataset.acreditacion[context.dataIndex];
+                        return [
+                            "Acreditación institucional: " + acred + " años",
+                            "Empleabilidad al 1.er año: " + context.raw + "%",
+                        ];
+                    },
+                },
+            },
+        },
+    },
+});
