@@ -171,7 +171,6 @@ new Chart(document.getElementById("barras"), {
     type: "bar",
     data: {
         labels: [
-            // ── Universidades (ordenadas por acreditación ↑, luego arancel ↑) ──
             "UNIACC",
             "U. de Viña del Mar",
             "U. Gabriela Mistral",
@@ -186,7 +185,7 @@ new Chart(document.getElementById("barras"), {
             "U. Mayor",
             "U. Finis Terrae",
             "U. de Valparaíso",
-            "U. Téc. Federico Santa María",
+            "U. Téc. Fca. Santa María",
             "U. Austral de Chile",
             "U. de Talca",
             "U. de Tarapacá",
@@ -203,74 +202,19 @@ new Chart(document.getElementById("barras"), {
             {
                 label: "Arancel anual promedio",
                 data: [
-                    // acred 3
                     4257500,
-                    // acred 4
-                    4277000,
-                    4814000,
-                    4827150,
-                    // acred 5
-                    4071000,
-                    4305000,
-                    4370500,
-                    4730000,
-                    5120000,
-                    5276000,
-                    5900000,
-                    7214218,
-                    7280000,
-                    // acred 6
-                    5713000,
-                    5726666,
-                    5887000,
-                    5887000,
-                    6555000,
-                    6604500,
-                    7597000,
-                    8725030,
-                    9754692,
-                    // acred 7
-                    5770500,
-                    5989550,
-                    6915000,
-                    8080000,
+                    4277000, 4814000, 4827150,
+                    4071000, 4305000, 4370500, 4730000, 5120000, 5276000, 5900000, 7214218, 7280000,
+                    5713000, 5726666, 5887000, 5887000, 6555000, 6604500, 7597000, 8725030, 9754692,
+                    5770500, 5989550, 6915000, 8080000,
                 ],
-                // Color por nivel de acreditación institucional (CNA 2026)
-                // rojo=3, naranja=4, amarillo=5, verde=6, azul=7
                 backgroundColor: [
-                    // acred 3
                     "rgba(234,67,53,.75)",
-                    // acred 4
-                    "rgba(255,109,1,.75)",
-                    "rgba(255,109,1,.75)",
-                    "rgba(255,109,1,.75)",
-                    // acred 5
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    "rgba(251,188,4,.75)",
-                    // acred 6
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    "rgba(52,168,83,.75)",
-                    // acred 7
-                    "rgba(26,115,232,.75)",
-                    "rgba(26,115,232,.75)",
-                    "rgba(26,115,232,.75)",
-                    "rgba(26,115,232,.75)",
+                    "rgba(255,109,1,.75)", "rgba(255,109,1,.75)", "rgba(255,109,1,.75)",
+                    "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)",
+                    "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)",
+                    "rgba(26,115,232,.75)", "rgba(26,115,232,.75)", "rgba(26,115,232,.75)", "rgba(26,115,232,.75)",
                 ],
-                // Años de acreditación por institución (mismo orden que labels/data)
                 acreditacion: [3, 4,4,4, 5,5,5,5,5,5,5,5,5, 6,6,6,6,6,6,6,6,6, 7,7,7,7],
                 borderWidth: 0,
                 borderRadius: 2,
@@ -326,3 +270,4 @@ new Chart(document.getElementById("barras"), {
         },
     },
 });
+ 
