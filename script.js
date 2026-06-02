@@ -269,75 +269,79 @@ new Chart(document.getElementById("barras"), {
     },
 });
 
-new Chart(document.getElementById("empleabilidad"), {
+new Chart(document.getElementById("empleabilidad-diseno"), {
     type: "bar",
     data: {
         labels: [
-            // acred 3
-            "UNIACC",
-            // acred 4
-            "U. Gabriela Mistral",
-            "UTEM",
-            "U. de Viña del Mar",
-            // acred 5
-            "U. Católica de Temuco",
-            "U. de Las Américas",
-            "U. de Antofagasta",
-            "U. de La Serena",
-            "U. del Bío-Bío",
-            "U. de Playa Ancha",
-            "U. Mayor",
-            "U. Finis Terrae",
-            "U. Bernardo O'Higgins",
-            // acred 6
-            "U. de Talca",
-            "U. de Valparaíso",
-            "U. Téc. Fca. Santa María",
-            "U. Austral de Chile",
-            "U. Andrés Bello",
-            "U. de Tarapacá",
-            "U. Diego Portales",
-            "U. del Desarrollo",
-            "U. Adolfo Ibáñez",
-            // acred 7
-            "USACH",
-            "U. de Chile",
-            "PUCV",
-            "PUC",
+            "U. de Chile — Diseño",
+            "PUC — Diseño",
+            "U. Diego Portales — Diseño",
+            "U. del Desarrollo — Diseño",
+            "U. de Valparaíso — Diseño",
+            "U. de Talca — Diseño",
+            "U. Finis Terrae — Diseño",
+            "U. Mayor — Diseño",
+            "U. de La Serena — Diseño",
+            "U. Andrés Bello — Diseño Gráfico",
+            "U. Andrés Bello — Vestuario y Textil",
+            "USACH — Diseño Industrial",
+            "U. del Bío-Bío — Diseño Gráfico",
+            "U. del Bío-Bío — Diseño Industrial",
+            "UTEM — Com. Visual",
+            "UTEM — Diseño Industrial",
+            "U. de Antofagasta — Diseño Gráfico",
+            "U. de Tarapacá — Diseño Multimedia",
         ],
         datasets: [
             {
-                label: "Empleabilidad al 1.er año de titulación (%)",
-                // Fuente: portal mifuturo.cl / SIES, buscador de empleabilidad e ingresos.
-                // Datos correspondientes a la carrera genérica "Diseño" por institución.
-                // Última actualización disponible: proceso admisión 2025 (cohortes hasta 2023).
+                label: "Empleabilidad al 1er año",
                 data: [
-                    // acred 3
-                    62,
-                    // acred 4
-                    58, 65, 60,
-                    // acred 5
-                    64, 66, 68, 63, 67, 65, 70, 72, 69,
-                    // acred 6
-                    71, 69, 74, 73, 75, 68, 76, 72, 70,
-                    // acred 7
-                    78, 77, 80, 82,
+                    64.0,
+                    71.8,
+                    63.2,
+                    56.8,
+                    44.1,
+                    55.2,
+                    44.8,
+                    39.7,
+                    45.3,
+                    31.7,
+                    40.8,
+                    64.8,
+                    48.8,
+                    45.9,
+                    54.3,
+                    59.0,
+                    48.8,
+                    39.5,
                 ],
-                backgroundColor: [
-                    // acred 3
-                    "rgba(234,67,53,.75)",
-                    // acred 4
-                    "rgba(255,109,1,.75)", "rgba(255,109,1,.75)", "rgba(255,109,1,.75)",
-                    // acred 5
-                    "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)", "rgba(251,188,4,.75)",
-                    // acred 6
-                    "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)", "rgba(52,168,83,.75)",
-                    // acred 7
-                    "rgba(26,115,232,.75)", "rgba(26,115,232,.75)", "rgba(26,115,232,.75)", "rgba(26,115,232,.75)",
-                ],
-                acreditacion: [3, 4,4,4, 5,5,5,5,5,5,5,5,5, 6,6,6,6,6,6,6,6,6, 7,7,7,7],
+                backgroundColor: "rgba(241,142,45,.75)",
                 borderWidth: 0,
-                borderRadius: 2,
+            },
+            {
+                label: "Empleabilidad al 2do año",
+                data: [
+                    71.2,
+                    79.3,
+                    74.2,
+                    73.1,
+                    47.4,
+                    null,
+                    63.9,
+                    60.7,
+                    null,
+                    51.6,
+                    60.5,
+                    64.5,
+                    54.2,
+                    null,
+                    58.7,
+                    73.4,
+                    null,
+                    44.7,
+                ],
+                backgroundColor: "rgba(51,51,51,.65)",
+                borderWidth: 0,
             },
         ],
     },
@@ -345,10 +349,10 @@ new Chart(document.getElementById("empleabilidad"), {
         indexAxis: "y",
         scales: {
             x: {
-                min: 0,
-                max: 100,
                 grid: { color: "rgba(0,0,0,0.06)" },
                 border: { color: "#ccc" },
+                min: 0,
+                max: 100,
                 ticks: {
                     font: { family: "'Georama', sans-serif", size: 11 },
                     color: "#999",
@@ -359,15 +363,21 @@ new Chart(document.getElementById("empleabilidad"), {
             },
             y: {
                 grid: { display: false },
-                border: { color: "#bbb", dash: [4, 4] },
+                border: { color: "#ccc" },
                 ticks: {
-                    font: { family: "'Georama', sans-serif", size: 11 },
+                    font: { family: "'Georama', sans-serif", size: 10 },
                     color: "#999",
                 },
             },
         },
         plugins: {
-            legend: { display: false },
+            legend: {
+                display: true,
+                labels: {
+                    font: { family: "'Georama', sans-serif", size: 11 },
+                    color: "#555",
+                },
+            },
             tooltip: {
                 backgroundColor: "#fff",
                 borderColor: "#ddd",
@@ -379,11 +389,8 @@ new Chart(document.getElementById("empleabilidad"), {
                 padding: 10,
                 callbacks: {
                     label: function (context) {
-                        const acred = context.dataset.acreditacion[context.dataIndex];
-                        return [
-                            "Acreditación institucional: " + acred + " años",
-                            "Empleabilidad al 1.er año: " + context.raw + "%",
-                        ];
+                        if (context.raw === null) return context.dataset.label + ": s/i";
+                        return context.dataset.label + ": " + context.raw + "%";
                     },
                 },
             },
