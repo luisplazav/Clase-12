@@ -248,6 +248,7 @@ figure {
     padding: 1.5rem;
     border: 2px solid #eee;
     border-radius: 4px;
+    overflow-x: auto;
 }
 
 figure figcaption {
